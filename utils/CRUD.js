@@ -43,12 +43,12 @@ function show() {
             if (transforming_tasks[index] !== undefined && transforming_tasks[index] != "") {
                 console.log(transforming_tasks[index]);
                 $("#new_task").append(`
-                    <tr>
+                    <tr id="deleted_row${transforming_tasks[index]}">
                         <td>
                         ${transforming_tasks[index]}
                         </td>
                         <td>
-                        <i class="fa fa-trash fa-lg" style="color:red;" onclick="task_details('${transforming_tasks[index]}');"></i>
+                        <i class="fa fa-trash fa-lg" style="color:red;" onclick="delete_task('${transforming_tasks[index]}');"></i>
                         </td>
                     </tr>
             `);
@@ -56,6 +56,15 @@ function show() {
         }
     }
 }
-function task_details(data) {
-
+function delete_task(data) {
+    //get the index of data passed
+    let index = tasks.indexOf(data);
+    //removing this index from tasks array
+    tasks.splice(index, 1);
+    //saving tasks in local storage again
+    localStorage.tasks = tasks;
+    if (localStorage.tasks.length == 0) {
+        $("#all_tasks").hide();
+    }
+    $("#deleted_row" + data).remove();
 }
