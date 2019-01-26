@@ -1,9 +1,23 @@
 "use strict";
-var tasks = [];
+
+if (localStorage.tasks) {
+    var tasks = [];
+    let transforming_tasks = localStorage.tasks.split(",");
+    for (let index = 0; index <= transforming_tasks.length; index++) {
+        tasks.push(transforming_tasks[index]);
+    }
+} else {
+    var tasks = [];
+}
+
 $(document).ready(() => {
     $("#task_error").hide();
     $("#task_success").hide();
     $("#all_tasks").hide();
+    if (tasks.length != 0) {
+        $("#all_tasks").show();
+        show();
+    }
 });
 //save task
 function save_task() {
@@ -41,7 +55,6 @@ function show() {
         let transforming_tasks = saved_tasks.split(",");
         for (let index = 0; index <= transforming_tasks.length; index++) {
             if (transforming_tasks[index] !== undefined && transforming_tasks[index] != "") {
-                console.log(transforming_tasks[index]);
                 $("#new_task").append(`
                     <tr id="deleted_row${transforming_tasks[index]}">
                         <td>
@@ -63,7 +76,8 @@ function delete_task(data) {
     tasks.splice(index, 1);
     //saving tasks in local storage again
     localStorage.tasks = tasks;
-    if (localStorage.tasks.length == 0) {
+    console.log(localStorage.tasks)
+    if (tasks.length == 0) {
         $("#all_tasks").hide();
     }
     $("#deleted_row" + data).remove();
