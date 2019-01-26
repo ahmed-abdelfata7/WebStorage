@@ -6,6 +6,7 @@
     <title>ToDo Storage</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 
@@ -17,18 +18,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 style="color:gray;text-align: center">Add todo</h1>
+                    <h1 style="color:gray;">Add todo</h1>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Task</label>
                         <div class="alert alert-danger" id="task_error"></div>
+                        <div class="alert alert-success" id="task_success"></div>
+
                         <input type="text" class="form-control" id="task" placeholder="Enter Your Task">
                     </div>
                     <button type="submit" class="btn btn-primary" onclick="save_task();">Save</button>
-
-
                 </div>
                 <div class="col-md-6">
-                    <h1 style="color:gray;text-align: center;">ToDo List</h1>
+                    <h1 style="color:gray;">ToDo List</h1>
+                    <table class="table" id="all_tasks">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Task</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="new_task">
+                        </tbody>
+                    </table>
+
+
 
                 </div>
             </div>
