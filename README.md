@@ -3,9 +3,9 @@ Before HTML5 application data had to be stored in cookies,included in every requ
 Web storage is more secure and can stored large amount of data locally without affecting on web site performance.
 # Two objects for storing data
 - session object `window.sessionStorage`
-This used to store data for one session and data lost when browser closed
+ used to store data for one session and data lost when browser closed.
 - local object `window.localStorage`
-This used to stroe data with no expiration date
+ used to stroe data with no expiration date.
 
 **Before using storage check if browser support it or not**
 
@@ -27,3 +27,7 @@ or
 `localStorage.Name`;
 # Delete data
 `localstorage.removeItem("Name");`
+
+# About the project
+I have been created a todo list application (CRUD) using localstorage you can download project.
+To know how you can use localStorage to store data locally.
